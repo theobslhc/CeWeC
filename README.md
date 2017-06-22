@@ -1,5 +1,7 @@
 # CeWeC
-Ceramics Wear Classification
+Ceramics Wear
 
-- [PCL_io_extra](https://github.com/adasta/pcl_io_extra)
+## Dependencies
+
+- [PCL](http://www.pointclouds.org/)
 - [liblas](https://github.com/libLAS/libLAS)

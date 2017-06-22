@@ -1,5 +1,5 @@
 # CeWeC
-Ceramics Wear
+Ceramics Wear Classification
 
 ## Dependencies
 

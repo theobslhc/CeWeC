@@ -29,3 +29,6 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable(processLASSample ${SOURCES_DIR}/processLASSample.cpp ${SOURCES_DIR}/utils/las_io.cpp ${HEADERS_DIR}/utils/las_io.h)
 target_link_libraries(processLASSample ${PCL_LIBRARIES} ${libLAS_LIBRARIES})
+
+add_executable(alignSample ${SOURCES_DIR}/alignSample.cpp)
+target_link_libraries(alignSample ${PCL_LIBRARIES})

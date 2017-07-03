@@ -27,5 +27,5 @@ link_directories(${libLAS_LIBRARY_DIRS})
 
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(processLASsample ${SOURCES_DIR}/processLASsample.cpp ${SOURCES_DIR}/utils/las_io.cpp ${HEADERS_DIR}/utils/las_io.h)
-target_link_libraries(processLASsample ${PCL_LIBRARIES} ${libLAS_LIBRARIES})
+add_executable(processLASSample ${SOURCES_DIR}/processLASSample.cpp ${SOURCES_DIR}/utils/las_io.cpp ${HEADERS_DIR}/utils/las_io.h)
+target_link_libraries(processLASSample ${PCL_LIBRARIES} ${libLAS_LIBRARIES})

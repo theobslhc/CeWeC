@@ -3,6 +3,10 @@
 #include <pcl/point_types.h>
 #include <pcl/registration/icp.h>
 #include <pcl/io/ply_io.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/io/ascii_io.h>
+#include <pcl/io/vtk_lib_io.h>
+#include <pcl/io/vtk_io.h>
 
 using namespace pcl;
 
@@ -23,12 +27,24 @@ int
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in(new pcl::PointCloud<pcl::PointXYZ>);
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_target(new pcl::PointCloud<pcl::PointXYZ>);
 
-  pcl::PLYReader Reader;
-  Reader.read(plyToAlign, *cloud_in);
-  Reader.read(targetPly, *cloud_target);
+  PLYReader reader;
+  pcl::PolygonMesh target_mesh;
+  reader.read(targetPly, target_mesh);
+
+  //pcl::io::loadPolygonFilePLY(targetPly, target_mesh);
+  pcl::fromPCLPointCloud2(target_mesh.cloud, *cloud_target);
+  //pcl::fromROSMsg(targetMesh->cloud, cloud_target);
+
+  std::cout << "target loaded." << std::endl;
+
+  pcl::io::loadPLYFile(plyToAlign, *cloud_in);
+
+  std::cout << "source loaded." << std::endl;
+
+  std::cout << "clouds loaded." << std::endl;
 
   pcl::IterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> icp;
-  icp.setInputCloud(cloud_in);
+  icp.setInputSource(cloud_in);
   icp.setInputTarget(cloud_target);
   pcl::PointCloud<pcl::PointXYZ> Final;
   icp.align(Final);
